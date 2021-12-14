@@ -1,0 +1,34 @@
+POST http://127.0.0.1:8080/auth/login
+Content-Type: application/json
+
+{
+  "login": "bedrin",
+  "pwdHash": "1234"
+}
+###
+POST http://127.0.0.1:8080/auth/register
+Content-Type: application/json
+
+{
+  "login": "bedrin",
+  "pwdHash": "123456789"
+}
+###
+POST http://127.0.0.1:8080/item
+Content-Type: application/json
+Authorization: Bearer {{eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbiI6ImJlZHJpbiJ9.1nYCMM7fKDSEbfM-EblJdcNhE_ylmZ-8GBrtX1pm628}}
+
+{
+  "name": "Мbb",
+  "amount": 214748364,
+  "price": 37.0
+}
+###
+PUT http://127.0.0.1:8080/item/Мb/5
+Content-Type: application/json
+Authorization: Bearer {{eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbiI6ImJlZHJpbiJ9.1nYCMM7fKDSEbfM-EblJdcNhE_ylmZ-8GBrtX1pm628}}
+
+###
+GET http://127.0.0.1:8080/item
+Accept: application/json
+Authorization: Bearer {{eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbiI6ImJlZHJpbiJ9.1nYCMM7fKDSEbfM-EblJdcNhE_ylmZ-8GBrtX1pm628}}
