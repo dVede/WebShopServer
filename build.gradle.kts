@@ -20,7 +20,6 @@ dependencies {
     implementation("ch.qos.logback:logback-classic:1.2.7")
     implementation("org.litote.kmongo:kmongo-coroutine:4.4.0")
     implementation("io.ktor:ktor-serialization:$ktorVersion")
-    implementation("io.ktor:ktor-serialization:$ktorVersion")
     implementation("io.ktor:ktor-gson:$ktorVersion")
     implementation("io.ktor:ktor-auth:$ktorVersion")
     implementation("io.ktor:ktor-auth-jwt:$ktorVersion")
