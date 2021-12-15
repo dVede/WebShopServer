@@ -2,33 +2,40 @@ POST http://127.0.0.1:8080/auth/login
 Content-Type: application/json
 
 {
-  "login": "bedrin",
-  "pwdHash": "1234"
+  "login": "a",
+  "pwdHash": "1"
 }
 ###
 POST http://127.0.0.1:8080/auth/register
 Content-Type: application/json
 
 {
-  "login": "bedrin",
-  "pwdHash": "123456789"
+  "login": "a",
+  "pwdHash": "1"
 }
 ###
 POST http://127.0.0.1:8080/item
 Content-Type: application/json
-Authorization: Bearer {{eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbiI6ImJlZHJpbiJ9.1nYCMM7fKDSEbfM-EblJdcNhE_ylmZ-8GBrtX1pm628}}
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJwd2RIYXNoIjoiMSIsImxvZ2luIjoiYSJ9.Djz1UenaiP-geNVuVgHf9kE25kZ3zNWrl6NuR7umNYQPt3jhZPxg1yq9sVXz-WJVYq6QhrGlGh0RZNSTKysV2w
 
 {
-  "name": "Мbb",
-  "amount": 214748364,
+  "name": "test2",
+  "amount": 40,
   "price": 37.0
 }
 ###
-PUT http://127.0.0.1:8080/item/Мb/5
-Content-Type: application/json
-Authorization: Bearer {{eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbiI6ImJlZHJpbiJ9.1nYCMM7fKDSEbfM-EblJdcNhE_ylmZ-8GBrtX1pm628}}
+PUT http://127.0.0.1:8080/item/buy
+Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJwd2RIYXNoIjoiMSIsImxvZ2luIjoiYSJ9.Djz1UenaiP-geNVuVgHf9kE25kZ3zNWrl6NuR7umNYQPt3jhZPxg1yq9sVXz-WJVYq6QhrGlGh0RZNSTKysV2w
 
+name=test&amount=1
+###
+PUT http://127.0.0.1:8080/item/add
+Content-Type: application/x-www-form-urlencoded
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJwd2RIYXNoIjoiMSIsImxvZ2luIjoiYSJ9.Djz1UenaiP-geNVuVgHf9kE25kZ3zNWrl6NuR7umNYQPt3jhZPxg1yq9sVXz-WJVYq6QhrGlGh0RZNSTKysV2w
+
+name=test&amount=4
 ###
 GET http://127.0.0.1:8080/item
 Accept: application/json
-Authorization: Bearer {{eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbiI6ImJlZHJpbiJ9.1nYCMM7fKDSEbfM-EblJdcNhE_ylmZ-8GBrtX1pm628}}
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJwd2RIYXNoIjoiMSIsImxvZ2luIjoiYSJ9.Djz1UenaiP-geNVuVgHf9kE25kZ3zNWrl6NuR7umNYQPt3jhZPxg1yq9sVXz-WJVYq6QhrGlGh0RZNSTKysV2w

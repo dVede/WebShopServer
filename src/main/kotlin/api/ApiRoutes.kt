@@ -17,7 +17,7 @@ fun Route.itemRouting(db: ItemsCollection) {
                 val items = db.getAll()
                 if (items.isNotEmpty()) call.respond(items)
                 else call.respond(
-                    status = HttpStatusCode.NotFound,
+                    status = HttpStatusCode.NoContent,
                     message = "No items found")
             }
             post {
@@ -40,9 +40,10 @@ fun Route.itemRouting(db: ItemsCollection) {
                                 message = "Something went wrong! Maybe this product already exist")
                 }
             }
-            put("add/{name}/{amount}") {
-                val name = call.parameters["name"] ?: return@put call.respond(HttpStatusCode.BadRequest)
-                val amount = call.parameters["amount"] ?: return@put call.respond(HttpStatusCode.BadRequest)
+            put("buy") {
+                val parameters = call.receiveParameters()
+                val name = parameters["name"] ?: return@put call.respond(HttpStatusCode.BadRequest)
+                val amount = parameters["amount"] ?: return@put call.respond(HttpStatusCode.BadRequest)
                 var newAmount: Int = amount.toIntOrNull() ?: return@put call.respond(
                     status = HttpStatusCode.BadRequest,
                     message = "Amount not a number")
@@ -57,11 +58,12 @@ fun Route.itemRouting(db: ItemsCollection) {
                 call.respond(
                     status = HttpStatusCode.OK,
                     message = "Amount of item: \"${item.name}\" was changed " +
-                            "from \"${item.amount}\" to \"${item.amount - newAmount}\"")
+                            "from \"${item.amount}\" to \"${newAmount}\"")
             }
-            put("sub/{name}/{amount}") {
-                val name = call.parameters["name"] ?: return@put call.respond(HttpStatusCode.BadRequest)
-                val amount = call.parameters["amount"] ?: return@put call.respond(HttpStatusCode.BadRequest)
+            put("add") {
+                val parameters = call.receiveParameters()
+                val name = parameters["name"] ?: return@put call.respond(HttpStatusCode.BadRequest)
+                val amount = parameters["amount"] ?: return@put call.respond(HttpStatusCode.BadRequest)
                 var newAmount: Int = amount.toIntOrNull() ?: return@put call.respond(
                     status = HttpStatusCode.BadRequest,
                     message = "Amount not a number")
@@ -73,7 +75,7 @@ fun Route.itemRouting(db: ItemsCollection) {
                 call.respond(
                     status = HttpStatusCode.OK,
                     message = "Amount of item: \"${item.name}\" was changed " +
-                            "from \"${item.amount}\" to \"${item.amount + newAmount}\"")
+                            "from \"${item.amount}\" to \"${newAmount}\"")
             }
             delete("{name}") {
                 val name = call.parameters["name"] ?: return@delete call.respond(HttpStatusCode.BadRequest)
